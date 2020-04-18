@@ -5,6 +5,8 @@ import api from "../../api/api";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
+import Form from "react-bootstrap/Form";
+import {CATEGORIES} from "../../constants/entity_config";
 
 const CreateForm = styled.div`
   margin-top: 40px;
@@ -54,7 +56,7 @@ const CreateRecipe = () => {
           <div className="form-group">
             <label>Description</label>
             <textarea
-              name="category"
+              name="longDesc"
               className="form-control"
               ref={register}
               rows={4}
@@ -62,13 +64,17 @@ const CreateRecipe = () => {
           </div>
 
           <div className="form-group">
-            <label>Description</label>
-            <input
-              name="longDesc"
-              className="form-control"
-              type="text"
-              ref={register}
-            />
+            <label>Category</label>
+            <Form.Control as="select" name="category" ref={register} custom defaultValue={CATEGORIES[0].key}>
+              {CATEGORIES.map(category => (
+                  <option
+                      key={category.key}
+                      value={category.key}
+                  >
+                    {category.text}
+                  </option>
+              ))}
+            </Form.Control>
           </div>
 
           <Button variant="primary" type="submit">
