@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import api from "../../../api/api";
-import {CATEGORIES} from "../../../constants/entity_config";
+import { CATEGORIES } from "../../../constants/entity_config";
 
 const RecipeCard = props => {
   const { recipe } = props;
@@ -11,12 +11,18 @@ const RecipeCard = props => {
   return (
     <div className="card">
       <img src={recipe.picture} className="card-img-top" alt={recipe.name} />
+        <div className="card-img-overlay">
+            <div className="card-title">
+                <small className="badge-info p-2">
+                    {CATEGORIES.find(category => category.key === recipe.category).text}
+                </small>
+            </div>
+        </div>
       <div className="card-body">
         <Link className="card-title" to={"/recipes/" + recipe.id}>
-          <h5 className="card-title">{recipe.name}</h5>
+          <h5 className="position-relative">{recipe.name}</h5>
         </Link>
         <p className="card-text">{recipe.shortDesc}</p>
-          <small>{recipe.category}</small>
       </div>
       <div className="card-footer justify-content-center align-items-center">
         <div className="text-center">
@@ -40,7 +46,7 @@ const RecipeCard = props => {
             </button>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center flex-column">
           <small className="text-muted" style={{ alignSelf: "right" }}>
             {recipe.createDate}
           </small>

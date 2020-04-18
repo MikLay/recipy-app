@@ -1,22 +1,25 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Route, Router, Switch } from "react-router-dom";
+import {Redirect, Route, Router, Switch} from "react-router-dom";
 import history from "../../history";
 import { url } from "../../constants";
 import { Footer, Header } from "../../components";
-import { Recipes } from "../";
-import Recipe from "../Recipe/Recipe";
-import EditRecipe from "../AddRecipe/EditRecipe";
-import CreateRecipe from "../CreateRecipe/CreateRecipe";
+import { Recipes, Recipe, EditRecipe, CreateRecipe } from "../";
 
 const PageContainer = styled.div`
-  height: 100%;
-  display: flex !important;
+
+position: relative;
+  min-height: 100%;
+    display: flex !important;
   flex-direction: column !important;
+  background: antiquewhite;
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.main`
   flex: 1 0 auto !important;
+  :after{
+  
+  }
 `;
 
 class App extends Component {
@@ -27,23 +30,23 @@ class App extends Component {
           <Router history={history}>
             <Header />
             <Switch>
-              <ContentContainer
-                style={{ background: "#d5c8c86e", height: "100%" }}
+              <ContentContainer role="main"
               >
+                <Route exact path="/"><Redirect to={url.URL_RECIPES}/></Route>
                 <Route
-                  path={[url.URL_RECIPES, "/"]}
+                  path={[url.URL_RECIPES]}
                   exact
                   strict
                   component={Recipes}
                 />
-                <Route path={[url.URL_RECIPY]} exact component={Recipe} />
+                <Route path={[url.URL_RECIPE]} exact component={Recipe} />
                 <Route
-                  path={[url.URL_EDIT_RECIPY]}
+                  path={[url.URL_EDIT_RECIPE]}
                   exact
                   component={EditRecipe}
                 />
                 <Route
-                  path={[url.URL_ADD_RECIPY]}
+                  path={[url.URL_ADD_RECIPE]}
                   exact
                   component={CreateRecipe}
                 />
