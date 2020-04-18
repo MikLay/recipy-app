@@ -12,8 +12,8 @@ export const SORTINGS = [
         value: "1",
         text: "By Date",
         func: (r1, r2) =>
-            moment(r1.createDate, "HH:mm:SS YYYY.MM.DD").isAfter(
-                moment(r2.createDate, "HH:mm:SS YYYY.MM.DD")
+            moment(r1.createDate, "YYYY-MM-DD HH:mm:SS").isAfter(
+                moment(r2.createDate, "YYYY-MM-DD HH:mm:SS")
             )
                 ? 1
                 : -1
