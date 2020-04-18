@@ -12,8 +12,8 @@ function fetchAllRecipes() {
         .then(({data}) => data);
 }
 
-function deleteRecipe(id) {
-    return api.delete(`/recipes/${id}`);
+async function deleteRecipe(id) {
+    return await api.delete(`/recipes/${id}`);
 }
 
 function updateRecipe(recipe) {

@@ -8,7 +8,7 @@ class Header extends Component {
                 <div className="navbar navbar-dark bg-dark shadow-sm">
                     <div className="container d-flex justify-content-between">
                         <Link to="/">
-                            <strong>Best Recipes Ever</strong>
+                            <h4>Best Recipes Ever</h4>
                         </Link>
                     </div>
                 </div>
