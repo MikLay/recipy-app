@@ -34,7 +34,9 @@ const CreateButtonCol = styled.div`
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
-  const [sort, setSort] = useState(localStorage.getItem("sorting"));
+  const [sort, setSort] = useState(
+    localStorage.getItem("sorting") || SORTINGS[0]
+  );
   const [searchName, setSearchName] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0]);
   const history = useHistory();
